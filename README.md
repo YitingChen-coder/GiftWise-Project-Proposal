@@ -11,7 +11,7 @@ Open `index.html` directly, or run `python3 -m http.server 8000` and visit http:
 - Official requirements: instructor's “Design, Build, Ship - Week 5 - Project Proposal.pdf”.
 - Project decisions: student-provided GiftWise implementation brief and approved plan.
 - Three interview excerpts: faithful English translations of Chinese interview records supplied by the student. The third excerpt is shortened with an ellipsis. No interviewee identities or quantitative validation are inferred.
-- All application integrations and roadmap functionality are planned, not operational. Historical-price provider access is unverified and is a principal v1 risk.
+- All application integrations and roadmap functionality are planned, not operational. Provider documentation has been researched, with primary links on the page; no API access has been tested. Keepa requires a subscription and is not a confirmed free-tier solution. No-cost historical-price provider access remains a principal v1 risk.
 - Original assignment deadline: November 3, 2026, 5:30 PM. No extension approval is claimed.
 
 ## Deployment

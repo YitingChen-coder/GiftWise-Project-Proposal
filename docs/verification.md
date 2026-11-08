@@ -20,3 +20,14 @@ Run `python3 -m http.server 8000` and visit http://localhost:8000, or open index
 
 ## Independent code review
 All rubric sections present; no misleading operational claims found. Reviewer identified a possible 320px decorative-art overflow. Added a narrow-screen adjustment and clipping on the hero boundary. This is a code-level mitigation; rendered mobile verification remains pending. Small editorial labels remain secondary to larger body text and headings.
+
+## Second rubric review and revision
+Re-read the entire instructor PDF on November 8. Added a concise overview for rapid scanning, explicit November 10–16 / 17–23 / 24–30 work periods, and source-linked feasibility notes. Increased body and supporting text sizes. Tablet architecture now uses a two-row grid; phone architecture stays vertical.
+
+Primary documentation reviewed:
+- https://support.google.com/faqs/answer/10675605?hl=en — existing U.S. price-insights reference, not an integration source.
+- https://serpapi.com/google-shopping-api — documented offer-search candidate, not selected or tested.
+- https://keepa.com/api-docs/ — documented Amazon historical-price API.
+- https://keepa.com/api-docs/plans-tokens.html — subscription required; no free access claimed.
+
+The HTML is still self-contained; external links are optional citations, not runtime assets. Rechecked unique IDs, internal links, single H1, explicit weekly content, and disclosure of untested integrations. Browser availability was checked again: no browser available, so rendered device checks remain unverified. Production Vercel deployment and the student's final read-through remain outstanding; no claim of full assignment completion is made.
