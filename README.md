@@ -17,7 +17,7 @@ Open `index.html` directly, or run `python3 -m http.server 8000` and visit http:
 ## Deployment
 After student copy review, deploy this directory using the student's own Vercel account: choose the Other/static preset, no build command, and serve the repository root. Alternatively use an authenticated `vercel` CLI and `vercel --prod`. Do not use an anonymous expiring deployment. No API keys are needed.
 
-Deployment status: not deployed; awaiting completed page review. The actual verified URL will be recorded after deployment.
+Deployment status: not deployed; awaiting student review of the completed page. Vercel CLI authentication was verified for account `chenyiting0521-3362`. The actual verified URL will be recorded after deployment.
 
 ## Rubric coverage
 - One-sentence problem and audience: introduction.
