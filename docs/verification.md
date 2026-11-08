@@ -46,3 +46,6 @@ The student explicitly requested Vercel deployment after the preview and second 
 - `/README.md`, `/docs/implementation-plan.md`, and `/.env` returned 404.
 
 This supersedes earlier “deployment pending” entries. Student permission to publish is confirmed; personal line-by-line reading is not independently verified. Classroom submission is left to the student. Browser visual QA remains unavailable and is not claimed complete.
+
+## Browser connection diagnostics
+Attempted desktop/mobile visual QA again after the student's request. Chrome is installed and running; the ChatGPT Chrome Extension is installed and enabled in the selected Default profile; the native messaging manifest exists and validates. Opened a fresh Chrome window and retried the supported browser connection. The runtime still reports `Browser is not available: extension` and exposes no connected browser. No screenshots or rendered layout results were produced. Following the browser troubleshooting instructions, the remaining recovery step is to reinstall the Chrome plugin through the ChatGPT/Codex plugin UI; no native-host repair or unsupported browser-control workaround was attempted.
