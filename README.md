@@ -4,6 +4,11 @@ Design, Build, Ship · MPCS 51238 · Autumn 2026 · Yiting Chen
 
 A single-page proposal for AI-powered holiday gift discovery, verified price comparison, and historical price context. **This repository is the proposal assignment, not the GiftWise application.**
 
+## Submission links
+
+- Live proposal: https://giftwise-project-proposal.vercel.app
+- GitHub repository: https://github.com/YitingChen-coder/GiftWise-Project-Proposal
+
 ## Preview
 Open `index.html` directly, or run `python3 -m http.server 8000` and visit http://localhost:8000. No package installation, framework, build step, external font, or runtime service is required.
 
@@ -17,7 +22,7 @@ Open `index.html` directly, or run `python3 -m http.server 8000` and visit http:
 ## Deployment
 After student copy review, deploy this directory using the student's own Vercel account: choose the Other/static preset, no build command, and serve the repository root. Alternatively use an authenticated `vercel` CLI and `vercel --prod`. Do not use an anonymous expiring deployment. No API keys are needed.
 
-Deployment status: not deployed; awaiting student review of the completed page. Vercel CLI authentication was verified for account `chenyiting0521-3362`. The actual verified URL will be recorded after deployment.
+Deployment status: production deployment READY on November 8, 2026, using the student’s authenticated Vercel account `chenyiting0521-3362`, workspace `cs-0c90`. The student explicitly authorized deployment after the preview and revision rounds. Anonymous HTTP verification returned 200 and the response matched `index.html` byte for byte. This was an account-backed production deploy, not a temporary anonymous deploy. Repository documentation is excluded from the hosted files by `.vercelignore`.
 
 ## Rubric coverage
 - One-sentence problem and audience: introduction.
@@ -27,4 +32,6 @@ Deployment status: not deployed; awaiting student review of the completed page. 
 - Planned stack, MCP servers, CLIs and rationale: The blueprint.
 - Static single HTML: `index.html` with embedded styling and artwork.
 - Iterative work: actual Git history; each meaningful step pushed to GitHub.
-- Own-account Vercel hosting and student copy review: pending, not claimed complete.
+- Own-account Vercel hosting: deployed and HTTP/content verified.
+- Review: preview supplied, revisions completed, and student explicitly authorized deployment. No claim that the student has personally read every line; a final read-through before Classroom submission is recommended.
+- Browser-based visual device checks remain unverified because the browser runtime was unavailable.

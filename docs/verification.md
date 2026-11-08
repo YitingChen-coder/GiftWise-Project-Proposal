@@ -31,3 +31,18 @@ Primary documentation reviewed:
 - https://keepa.com/api-docs/plans-tokens.html — subscription required; no free access claimed.
 
 The HTML is still self-contained; external links are optional citations, not runtime assets. Rechecked unique IDs, internal links, single H1, explicit weekly content, and disclosure of untested integrations. Browser availability was checked again: no browser available, so rendered device checks remain unverified. Production Vercel deployment and the student's final read-through remain outstanding; no claim of full assignment completion is made.
+
+## Production deployment verification
+The student explicitly requested Vercel deployment after the preview and second revision round.
+
+- Authenticated Vercel account: `chenyiting0521-3362`; workspace: `cs-0c90`.
+- Project: `giftwise-project-proposal`.
+- Deployment ID: `dpl_FKCRKV2aQWaHeiDikQMrWcEPF1pL`.
+- Production URL: https://giftwise-project-proposal.vercel.app
+- CLI result: READY, production; account-backed deployment, no temporary/expiry option used.
+- Anonymous GET: HTTP 200, `text/html; charset=utf-8`, 35,869 bytes.
+- Response exactly matched local `index.html`.
+- HTML SHA-256: `5815fa21b73350b8c3d8c04c8410281d20308261367d263aa40fff7e27c7c673`.
+- `/README.md`, `/docs/implementation-plan.md`, and `/.env` returned 404.
+
+This supersedes earlier “deployment pending” entries. Student permission to publish is confirmed; personal line-by-line reading is not independently verified. Classroom submission is left to the student. Browser visual QA remains unavailable and is not claimed complete.
