@@ -165,6 +165,14 @@ footer{border-top:1px solid var(--line);padding-block:34px;display:flex;justify-
     <div class="theme"><div><h3>The price comparison is the payoff, so it has to look like one.</h3><p class="muted">Tester 2 found it too easy to miss. Today it sits behind an outlined button inside each card.</p></div></div>
     <div class="theme"><div><h3>Trust has to hold up under a closer look.</h3><p class="muted">From my walkthrough and the eval: invented details, off-target listings, and unlabelled resale offers undercut the "grounded" promise of an AI-focused project.</p></div></div>
   </div>
+
+  <h3 style="margin-top:44px">Questions from class feedback</h3>
+  <p class="muted small">A classmate asked three sharp questions after the presentation. Honest answers for v1, and what changes in v2:</p>
+  <div class="themes">
+    <div class="theme"><div><h3>What counts as "similar"? Is an iPhone similar to any smartphone, or only to other iPhones, and every generation?</h3><p class="muted"><b>v1:</b> similarity comes from Google Shopping's search for the AI's query. Since Nov 17, v1 labels each listing as a <b>Close match</b> (its title contains at least 60% of the query's key words) or a <b>Similar item</b>, and the best price is chosen from close matches only. It is a word check, so "iPhone 15" and "iPhone 15 Pro" can both look close. <b>v2:</b> three explicit tiers. <i>Same product</i> means the same model and generation. <i>Same line</i> means another generation or size, labelled as such. <i>Alternative</i> means the same category from another brand, shown separately and never mixed into the price comparison.</p></div></div>
+    <div class="theme"><div><h3>Stores name the same product differently. How do you avoid duplicates?</h3><p class="muted"><b>v1:</b> each store appears once, but GiftWise doesn't yet prove that two stores sell the identical item, and says so. <b>v2:</b> match by product identity, not title. Use Google Shopping's product grouping (one product ID with many sellers) and GTIN/UPC or model numbers when available. Listings with the same identity are merged into one row per store, and a title-only match never counts as "same product."</p></div></div>
+    <div class="theme"><div><h3>People often plan one gift and find a better one while searching. Does the tool prevent that?</h3><p class="muted">GiftWise shouldn't prevent it; that discovery is part of the value. v1 already returns five different ideas instead of one. <b>v2:</b> the "I know what I want" path stays focused on comparing the chosen product. Below the comparison it shows two clearly separated "Worth a look" alternatives, so a better gift can surface without hijacking a shopper who has already decided.</p></div></div>
+  </div>
 </section>
 
 <section class="section wrap" id="plan" aria-labelledby="plan-title">
@@ -187,7 +195,9 @@ footer{border-top:1px solid var(--line);padding-block:34px;display:flex;justify-
       <div class="item">
         <h4>Better offer matching</h4>
         <p>The model filters listings that don't match the idea. Resale sellers get a "resale / used" label. Eval tracks the share of relevant listings.</p>
-        <p class="why"><b>Why:</b> The Mickey tote and the pruning shears; Mercari shown like a store.</p>
+        <p>Three similarity tiers (same product / same line / alternative), and duplicates merged by product ID, GTIN or model number rather than by title.</p>
+        <p class="why"><b>Why:</b> The Mickey tote and the pruning shears; Mercari shown like a store; class feedback on what "similar" means.</p>
+        <p class="why"><b>Started Nov 17:</b> v1 now labels each listing "Close match" or "Similar item," and only close matches can be the best price.</p>
       </div>
       <div class="item">
         <h4>Refinement keeps every interest</h4>
@@ -201,7 +211,7 @@ footer{border-top:1px solid var(--line);padding-block:34px;display:flex;justify-
       <div class="item">
         <h4>Two ways in: "Inspire me" or "I know what I want"</h4>
         <p><b>Inspire me:</b> a browsable start page of gift themes ("cozy winter," "for the hobbyist," "experiences, not things," "under $25"), each a tap away from tailored ideas.</p>
-        <p><b>I know what I want:</b> type a product, skip the questions, go straight to the comparison.</p>
+        <p><b>I know what I want:</b> type a product, skip the questions, go straight to the comparison. Two "Worth a look" alternatives sit below it, kept apart from the prices.</p>
         <p class="why"><b>Why:</b> Tester 3 described both needs. Testers 1 and 3 asked for inspiration.</p>
       </div>
       <div class="item">
