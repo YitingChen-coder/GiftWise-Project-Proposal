@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#163D32">
+<meta name="description" content="GiftWise v1 results, user testing, and the plan for v2.">
+<title>GiftWise — From v1 to v2</title>
+<style>
+:root{--green:#163d32;--ivory:#faf7f0;--paper:#fffdf7;--burgundy:#8f2637;--gold:#c7a56a;--ink:#202824;--muted:#5e6861;--line:#dcded3;--serif:Georgia,'Times New Roman',serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--ivory);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;line-height:1.7}
+a{color:var(--green);text-underline-offset:3px}
+a:focus-visible{outline:3px solid var(--burgundy);outline-offset:4px}
+.wrap{width:min(1080px,calc(100% - 96px));margin-inline:auto}
+.skip{position:absolute;left:16px;top:-100px;background:var(--green);color:#fff;padding:12px}.skip:focus{top:16px}
+.site-header{min-height:96px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.wordmark{font-family:var(--serif);font-size:28px;font-weight:bold;letter-spacing:-1px;color:var(--green);text-decoration:none}
+.wordmark span{color:var(--burgundy)}
+nav{display:flex;gap:26px;font-size:12px;font-weight:600}
+nav a{color:var(--ink);text-decoration:none;padding:10px 0}nav a:hover{color:var(--burgundy)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin-top:0}
+h1{font-size:clamp(46px,6vw,76px);line-height:1.04;letter-spacing:-2px;margin-bottom:24px}
+h2{font-size:clamp(32px,4vw,46px);line-height:1.08;letter-spacing:-1.2px;margin-bottom:18px}
+h3{font-size:22px;line-height:1.25;margin-bottom:10px}
+em{color:var(--burgundy)}
+.eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--green);margin:0 0 18px}
+.lede{max-width:640px;font-size:17px;color:#4b5850}
+.hero{padding-block:70px 50px}
+.links{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.button{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:var(--ivory);padding:12px 20px;font-size:13px;font-weight:600;border-radius:3px;text-decoration:none}
+.button.ghost{background:transparent;color:var(--green);border:1px solid var(--green)}
+.button:hover{background:#255444;color:var(--ivory)}
+.section{padding-block:60px;border-top:1px solid var(--line)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--paper);border:1px solid var(--line);padding:26px;border-radius:4px;min-width:0}
+.card p:last-child,.card ul:last-child{margin-bottom:0}
+.kicker{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;color:var(--burgundy);margin-bottom:10px}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+ul.clean{padding-left:18px;margin:0}ul.clean li{margin-bottom:6px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:26px}
+.stat{border-top:3px solid var(--gold);padding-top:14px}
+.stat strong{display:block;font-family:var(--serif);font-size:38px;font-weight:400;color:var(--green);line-height:1.1}
+.stat span{font-size:13px;color:var(--muted)}
+blockquote{margin:0 0 16px;font-family:var(--serif);font-size:19px;line-height:1.45}
+.tag{display:inline-block;font-size:11px;font-weight:600;border-radius:999px;padding:3px 10px;margin:0 6px 6px 0;background:#efe6d3;color:var(--ink)}
+.themes{counter-reset:t;display:grid;gap:14px;margin-top:28px}
+.theme{display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start;background:var(--paper);border:1px solid var(--line);padding:20px 22px;border-radius:4px}
+.theme:before{counter-increment:t;content:counter(t);font-family:var(--serif);font-size:36px;color:var(--gold);line-height:1}
+.theme h3{margin-bottom:4px}.theme p{margin:0}
+.plan{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px}
+.col h3{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:2px solid var(--green);padding-bottom:10px;margin-bottom:16px}
+.col h3 small{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.col.wait h3{border-color:var(--line)}
+.item{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:18px;margin-bottom:14px}
+.item h4{margin:0 0 6px;font-size:15px}
+.item p{margin:0 0 8px;font-size:13.5px}
+.why{font-size:12.5px!important;color:var(--muted)}
+.why b{color:var(--burgundy);font-weight:600}
+.timeline{list-style:none;padding:0;margin:28px 0 0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.timeline li{border-left:3px solid var(--gold);padding:4px 0 4px 16px}
+.timeline strong{display:block;font-family:var(--serif);font-size:20px;font-weight:400;color:var(--green)}
+.timeline span{font-size:13px;color:var(--muted)}
+.note{margin-top:22px;font-size:12.5px;color:var(--muted);max-width:760px}
+footer{border-top:1px solid var(--line);padding-block:34px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+@media(max-width:900px){.wrap{width:calc(100% - 48px)}.grid-3,.plan{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.timeline{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.wrap{width:calc(100% - 32px)}.grid-2{grid-template-columns:1fr}nav{width:100%;justify-content:space-between;gap:10px;font-size:11px}.site-header{padding-block:16px}.hero{padding-block:44px 34px}.section{padding-block:44px}.card{padding:20px}.timeline{grid-template-columns:1fr}.theme{grid-template-columns:36px 1fr;padding:16px}.theme:before{font-size:28px}.stat strong{font-size:30px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{nav,.links,.skip{display:none}.section{padding-block:24px}.card,.item,.theme{break-inside:avoid}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header wrap">
+  <a class="wordmark" href="index.html" aria-label="GiftWise proposal home">✧ GiftWise<span>.</span></a>
+  <nav aria-label="Page sections">
+    <a href="#v1">What shipped</a>
+    <a href="#testing">What we saw</a>
+    <a href="#plan">The v2 plan</a>
+    <a href="index.html">Original proposal ↩</a>
+  </nav>
+</header>
+
+<main id="main">
+<section class="hero wrap" aria-labelledby="title">
+  <p class="eyebrow">Project v1 · November 17, 2026</p>
+  <h1 id="title">From v1 to v2.<br><em>What people showed us.</em></h1>
+  <p class="lede">GiftWise v1 is live. A shopper can describe someone, get five gift ideas within budget, and compare real prices across stores. Three people tried it. This page covers what worked, what they asked for, and what changes before the December 1 project fair.</p>
+  <div class="links">
+    <a class="button" href="https://giftwise-fawn.vercel.app">Try GiftWise v1 ↗</a>
+    <a class="button ghost" href="https://github.com/YitingChen-coder/giftwise">Source on GitHub ↗</a>
+  </div>
+</section>
+
+<section class="section wrap" id="v1" aria-labelledby="v1-title">
+  <p class="eyebrow">01 / What shipped in v1</p>
+  <h2 id="v1-title">One complete journey.<br><em>Nothing pretended.</em></h2>
+  <div class="grid-2">
+    <div class="card">
+      <p class="kicker">The core task</p>
+      <ol class="clean">
+        <li>Pick who it's for and a budget, then describe them in your own words.</li>
+        <li>Get five AI gift ideas, each with a reason and a rough price estimate.</li>
+        <li>Tap <b>Compare prices</b> to see real listings from different stores within budget, with store, price, delivery, rating, and the time we checked.</li>
+        <li>Not quite right? Ask for changes in plain words ("more practical") without starting over.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <p class="kicker">Changed from the proposal</p>
+      <ul class="clean">
+        <li><b>No price history in v1.</b> No free, permitted source was available, so the app says so instead of guessing.</li>
+        <li><b>Offers come from SerpApi's Google Shopping Light engine.</b> The standard Google Shopping engine returned no results during the build.</li>
+        <li><b>Guest only.</b> No accounts or database yet, so there is no personal data to protect.</li>
+        <li><b>AI guardrail on the server.</b> Any idea the model prices over budget is dropped before the shopper sees it.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="stats" aria-label="First evaluation results">
+    <div class="stat"><strong>30/30</strong><span>AI ideas estimated within budget (6 test shoppers)</span></div>
+    <div class="stat"><strong>6/6</strong><span>"A bit cheaper" refinements lowered the average price</span></div>
+    <div class="stat"><strong>8/12</strong><span>top ideas had a real store listing within budget</span></div>
+    <div class="stat"><strong>0/2</strong><span>for a $15 Secret Santa budget, the weakest case</span></div>
+  </div>
+  <p class="note">From <a href="https://github.com/YitingChen-coder/giftwise/blob/main/docs/eval-results.md">a small eval script</a> run against the live app: 6 hand-written shoppers, one run each. It is a first signal, not a benchmark.</p>
+</section>
+
+<section class="section wrap" id="testing" aria-labelledby="testing-title">
+  <p class="eyebrow">02 / User testing</p>
+  <h2 id="testing-title">Three people tried it.<br><em>Two kinds of shoppers appeared.</em></h2>
+  <p class="lede">Each person tried the core task on the live site: find a gift within budget for someone real on their list, and decide where to buy it. Their feedback, paraphrased from my notes:</p>
+  <div class="grid-3" style="margin-top:26px">
+    <article class="card">
+      <p class="kicker">Tester 1</p>
+      <blockquote>The site is really good. It helps me find a lot of things I want, but the variety could be richer, and it could give me more inspiration.</blockquote>
+      <span class="tag">More variety</span><span class="tag">Inspiration</span>
+    </article>
+    <article class="card">
+      <p class="kicker">Tester 2</p>
+      <blockquote>The site is really good, but the UI could be clearer. When I click through to compare prices, the comparison could be more obvious.</blockquote>
+      <span class="tag">Clearer UI</span><span class="tag">Make comparison stand out</span>
+    </article>
+    <article class="card">
+      <p class="kicker">Tester 3</p>
+      <blockquote>When I'm not sure what I want at the start, I'd like more inspiration, maybe a page of recommendations to browse first. But if I already know what I want, it should be more focused.</blockquote>
+      <span class="tag">Browse to start</span><span class="tag">Focused path</span>
+    </article>
+  </div>
+
+  <h3 style="margin-top:44px">My own walkthrough as a new user (phone and desktop)</h3>
+  <ul class="clean small">
+    <li><b>An unsupported claim.</b> I described a mom who likes gardening and mystery novels and is always cold. One reason mentioned "not straining her knees," which I never said.</li>
+    <li><b>Refining narrowed too far.</b> After "more practical," almost every idea became a gardening item, and the mystery-novel interest disappeared.</li>
+    <li><b>Some listings didn't match the idea.</b> A search for a "gardening tool set" also returned a Mickey Mouse garden tote and a pair of pruning shears.</li>
+    <li><b>Resale sellers looked like stores.</b> Mercari and eBay resellers appeared next to Home Depot, with no "used" label.</li>
+    <li><b>Refining gave no feedback, and the refine box was hard to find on a phone.</b> Both were fixed in v1 before testing.</li>
+  </ul>
+
+  <h3 style="margin-top:44px">What the feedback adds up to</h3>
+  <div class="themes">
+    <div class="theme"><div><h3>Not everyone arrives with an idea.</h3><p class="muted">Testers 1 and 3 wanted inspiration before typing anything. v1 starts with a form that assumes you can already describe the person well.</p></div></div>
+    <div class="theme"><div><h3>Some shoppers already know.</h3><p class="muted">Tester 3 wanted a faster, more focused path for when the gift is decided and the question is where to buy it. That is the proposal's "Where should I buy it?" pillar.</p></div></div>
+    <div class="theme"><div><h3>The price comparison is the payoff, so it has to look like one.</h3><p class="muted">Tester 2 found it too easy to miss. Today it sits behind an outlined button inside each card.</p></div></div>
+    <div class="theme"><div><h3>Trust has to hold up under a closer look.</h3><p class="muted">From my walkthrough and the eval: invented details, off-target listings, and unlabelled resale offers undercut the "grounded" promise of an AI-focused project.</p></div></div>
+  </div>
+</section>
+
+<section class="section wrap" id="plan" aria-labelledby="plan-title">
+  <p class="eyebrow">03 / The v2 plan</p>
+  <h2 id="plan-title">Fix what testers felt.<br><em>Then add what they asked for.</em></h2>
+  <div class="plan">
+    <div class="col">
+      <h3>Fix first <small>Nov 17–23</small></h3>
+      <div class="item">
+        <h4>Make price comparison the hero</h4>
+        <p>A solid primary "Compare prices" button. After lookup, the card shows "from $12.98 at Home Depot," and the comparison becomes a clear table: store, price, delivery, condition.</p>
+        <p class="why"><b>Why:</b> Tester 2 said it wasn't obvious. It's the step that answers "where should I buy it?"</p>
+      </div>
+      <div class="item">
+        <h4>Grounding check for AI reasons</h4>
+        <p>A second, cheap model pass checks each reason against what the shopper actually said, and removes or rewrites unsupported claims. Unsupported-claim rate becomes an eval metric.</p>
+        <p class="why"><b>Why:</b> The invented "knees" detail. Trust is the bar the proposal set for the AI focus.</p>
+      </div>
+      <div class="item">
+        <h4>Better offer matching</h4>
+        <p>The model filters listings that don't match the idea. Resale sellers get a "resale / used" label. Eval tracks the share of relevant listings.</p>
+        <p class="why"><b>Why:</b> The Mickey tote and the pruning shears; Mercari shown like a store.</p>
+      </div>
+      <div class="item">
+        <h4>Refinement keeps every interest</h4>
+        <p>Refined lists must still cover each interest the shopper named, unless they asked to drop one.</p>
+        <p class="why"><b>Why:</b> "More practical" quietly removed the mystery-novel interest.</p>
+      </div>
+    </div>
+
+    <div class="col">
+      <h3>Add <small>Nov 24–30</small></h3>
+      <div class="item">
+        <h4>Two ways in: "Inspire me" or "I know what I want"</h4>
+        <p><b>Inspire me:</b> a browsable start page of gift themes ("cozy winter," "for the hobbyist," "experiences, not things," "under $25"), each a tap away from tailored ideas.</p>
+        <p><b>I know what I want:</b> type a product, skip the questions, go straight to the comparison.</p>
+        <p class="why"><b>Why:</b> Tester 3 described both needs. Testers 1 and 3 asked for inspiration.</p>
+      </div>
+      <div class="item">
+        <h4>More variety</h4>
+        <p>Every set mixes categories: practical, personal, experience, hobby. Each card gets a category tag, and a "Show more ideas" button.</p>
+        <p class="why"><b>Why:</b> Tester 1 asked for richer variety.</p>
+      </div>
+      <div class="item">
+        <h4>Save a shortlist</h4>
+        <p>Keep ideas and offers in a list on this device, so shoppers can compare across people on their list.</p>
+        <p class="why"><b>Why:</b> A lighter first step toward the proposal's saved gifts, with no account needed.</p>
+      </div>
+    </div>
+
+    <div class="col wait">
+      <h3>Wait <small>After Dec 1</small></h3>
+      <div class="item">
+        <h4>Accounts (Clerk + Supabase)</h4>
+        <p>Optional sign-in, synced lists, search history. Turn on row-level security for every table when it lands.</p>
+        <p class="why"><b>Why:</b> No tester asked for an account, and it adds real security work. A local shortlist covers the need first.</p>
+      </div>
+      <div class="item">
+        <h4>Price history and timing advice</h4>
+        <p>Still no free, permitted source. Once a database exists, record the prices GiftWise itself observes and show them as "seen by GiftWise." Never generate history.</p>
+        <p class="why"><b>Why:</b> Honest history beats invented history, and testers' first asks were discovery and clarity.</p>
+      </div>
+      <div class="item">
+        <h4>Price alerts, more retailers</h4>
+        <p>Outside v2 scope, as in the original proposal.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:48px">How I'll know v2 is better</h3>
+  <div class="grid-2">
+    <div class="card">
+      <p class="kicker">Retest with the same three people</p>
+      <ul class="clean small">
+        <li>Can someone with <i>no idea yet</i> reach a gift they'd buy, without help?</li>
+        <li>Can someone who knows the product reach a price comparison in one step?</li>
+        <li>Does each tester notice and use the price comparison on their own?</li>
+      </ul>
+    </div>
+    <div class="card">
+      <p class="kicker">Extend the eval</p>
+      <ul class="clean small">
+        <li>Unsupported claims per reason, target 0.</li>
+        <li>Share of listings judged relevant to the idea.</li>
+        <li>Real-offer coverage, especially at $15–$25 budgets.</li>
+        <li>Category variety per set of ideas.</li>
+      </ul>
+    </div>
+  </div>
+
+  <ol class="timeline" aria-label="Schedule">
+    <li><strong>Nov 17</strong><span>v1 in class</span></li>
+    <li><strong>Nov 17–23</strong><span>Fix first: comparison, grounding, matching</span></li>
+    <li><strong>Nov 24–30</strong><span>Add: two entry paths, variety, shortlist; retest</span></li>
+    <li><strong>Dec 1</strong><span>v2 at the project fair</span></li>
+  </ol>
+  <p class="note">Tester feedback was given in English and is condensed from my notes. Three testers is a small sample: enough to choose directions, not to prove demand. Costs stay on free tiers: OpenAI has a monthly spending limit, and SerpApi is on its free plan.</p>
+</section>
+</main>
+
+<footer class="wrap">
+  <div>Yiting Chen · Design, Build, Ship · MPCS 51238 · Autumn 2026</div>
+  <div><a href="index.html">Original proposal</a> · <a href="https://giftwise-fawn.vercel.app">GiftWise v1</a> · <a href="https://github.com/YitingChen-coder/giftwise">App source</a></div>
+</footer>
+</body>
+</html>

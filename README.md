@@ -6,6 +6,8 @@ A single-page proposal for AI-powered holiday gift discovery, verified price com
 
 ## Submission links
 
+- **Project v1 (Nov 17, 2026):** live app https://giftwise-fawn.vercel.app · app code https://github.com/YitingChen-coder/giftwise · v2 plan https://giftwise-project-proposal.vercel.app/v2.html (`v2.html`, linked from a banner at the top of the proposal page)
+
 - Live proposal: https://giftwise-project-proposal.vercel.app
 - GitHub repository: https://github.com/YitingChen-coder/GiftWise-Project-Proposal
 
